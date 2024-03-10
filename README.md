@@ -1,5 +1,5 @@
 # ShopEase.Backend.PassportService
-ShopEase PassportService combineds the **Auth Service** and the **User Service** of ShopEase!
+ShopEase PassportService combines the **Auth Service** and the **User Service** of ShopEase!
 
 **This repo has two aspects -**
   **1. Security:** To grant access and signify identity, aligning well with user authentication and authorization.
