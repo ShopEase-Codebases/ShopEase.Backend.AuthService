@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopEase.Backend.AuthService.API", "ShopEase.Backend.AuthService.API\ShopEase.Backend.AuthService.API.csproj", "{FE9299DC-BBDE-438E-8074-65C912C98B81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopEase.Backend.PassportService.API", "ShopEase.Backend.PassportService.API\ShopEase.Backend.PassportService.API.csproj", "{FE9299DC-BBDE-438E-8074-65C912C98B81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopEase.Backend.PassportService.Application", "ShopEase.Backend.PassportService.Application\ShopEase.Backend.PassportService.Application.csproj", "{48FD2286-99EC-45AE-BFB2-92DFEEF86287}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopEase.Backend.PassportService.Core", "ShopEase.Backend.PassportService.Core\ShopEase.Backend.PassportService.Core.csproj", "{C6123DEE-517D-4360-823F-F03A9FC8D391}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopEase.Backend.PassportService.Infrastructure", "ShopEase.Backend.PassportService.Infrastructure\ShopEase.Backend.PassportService.Infrastructure.csproj", "{00C8820A-5230-4CEF-B821-0BCBB915E532}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{FE9299DC-BBDE-438E-8074-65C912C98B81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE9299DC-BBDE-438E-8074-65C912C98B81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE9299DC-BBDE-438E-8074-65C912C98B81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48FD2286-99EC-45AE-BFB2-92DFEEF86287}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48FD2286-99EC-45AE-BFB2-92DFEEF86287}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48FD2286-99EC-45AE-BFB2-92DFEEF86287}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48FD2286-99EC-45AE-BFB2-92DFEEF86287}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6123DEE-517D-4360-823F-F03A9FC8D391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6123DEE-517D-4360-823F-F03A9FC8D391}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6123DEE-517D-4360-823F-F03A9FC8D391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6123DEE-517D-4360-823F-F03A9FC8D391}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00C8820A-5230-4CEF-B821-0BCBB915E532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00C8820A-5230-4CEF-B821-0BCBB915E532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00C8820A-5230-4CEF-B821-0BCBB915E532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00C8820A-5230-4CEF-B821-0BCBB915E532}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

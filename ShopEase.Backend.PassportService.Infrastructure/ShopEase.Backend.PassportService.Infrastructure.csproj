@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ShopEase.Backend.AuthService.Application\ShopEase.Backend.PassportService.Application.csproj" />
+    <ProjectReference Include="..\ShopEase.Backend.PassportService.Application\ShopEase.Backend.PassportService.Application.csproj" />
   </ItemGroup>
 
 </Project>
