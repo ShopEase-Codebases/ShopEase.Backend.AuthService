@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShopEase.Backend.PassportService.Core.Primitives
+﻿namespace ShopEase.Backend.Common.Shared
 {
     /// <summary>
     /// Class for Defining Result Type

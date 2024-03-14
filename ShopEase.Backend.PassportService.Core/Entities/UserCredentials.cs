@@ -1,4 +1,4 @@
-﻿using ShopEase.Backend.PassportService.Core.Primitives;
+﻿using ShopEase.Backend.Common.Domain.Primitives;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShopEase.Backend.PassportService.Core.Entities
@@ -7,7 +7,7 @@ namespace ShopEase.Backend.PassportService.Core.Entities
     /// UserCredentials Entity Class
     /// </summary>
     [Table("UserCredentials", Schema = "Passport")]
-    public sealed class UserCredentials : Entity
+    public sealed class UserCredentials : Entity, IAudit
     {
         #region Properties
 
@@ -39,17 +39,17 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <summary>
         /// CreatedOn DateTime UTC
         /// </summary>
-        public DateTime CreatedOnUtc { get; private set; }
+        public DateTime CreatedOnUtc { get; set; }
 
         /// <summary>
         /// UpdatedOn DateTime UTC
         /// </summary>
-        public DateTime UpdatedOnUtc { get; private set; }
+        public DateTime UpdatedOnUtc { get; set; }
 
         /// <summary>
         /// RowStatus
         /// </summary>
-        public bool RowStatus { get; private set; }
+        public bool RowStatus { get; set; }
 
         #endregion
 

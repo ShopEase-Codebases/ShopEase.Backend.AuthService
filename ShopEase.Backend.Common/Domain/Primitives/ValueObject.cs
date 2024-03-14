@@ -1,4 +1,4 @@
-﻿namespace ShopEase.Backend.PassportService.Core.Primitives
+﻿namespace ShopEase.Backend.Common.Domain.Primitives
 {
     /// <summary>
     /// Base Class for ValueObjects

@@ -1,4 +1,4 @@
-﻿using ShopEase.Backend.PassportService.Core.Primitives;
+﻿using ShopEase.Backend.Common.Domain.Primitives;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShopEase.Backend.PassportService.Core.Entities
@@ -7,7 +7,7 @@ namespace ShopEase.Backend.PassportService.Core.Entities
     /// UserOtpDetails Entity Class
     /// </summary>
     [Table("UserOtpDetails", Schema = "Passport")]
-    public sealed class UserOtpDetails : Entity
+    public sealed class UserOtpDetails : Entity, IAudit
     {
         #region Properties
 
@@ -34,12 +34,17 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <summary>
         /// CreatedOn DateTime UTC
         /// </summary>
-        public DateTime CreatedOnUtc { get; private set; }
+        public DateTime CreatedOnUtc { get; set; }
 
         /// <summary>
         /// UpdatedOn DateTime UTC
         /// </summary>
-        public DateTime UpdatedOnUtc { get; private set; }
+        public DateTime UpdatedOnUtc { get; set; }
+
+        /// <summary>
+        /// RowStatus
+        /// </summary>
+        public bool RowStatus { get; set; }
 
         #endregion
 

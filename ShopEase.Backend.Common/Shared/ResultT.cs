@@ -1,4 +1,4 @@
-﻿namespace ShopEase.Backend.PassportService.Core.Primitives
+﻿namespace ShopEase.Backend.Common.Shared
 {
     /// <summary>
     /// Class for Defining Genric Result Type

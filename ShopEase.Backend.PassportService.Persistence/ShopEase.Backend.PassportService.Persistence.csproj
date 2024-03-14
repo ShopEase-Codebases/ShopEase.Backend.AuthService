@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ShopEase.Backend.Common\ShopEase.Backend.Common.csproj" />
-  </ItemGroup>
-
 </Project>

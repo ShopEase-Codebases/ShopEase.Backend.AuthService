@@ -1,4 +1,4 @@
-﻿namespace ShopEase.Backend.PassportService.Core.Primitives
+﻿namespace ShopEase.Backend.Common.Shared
 {
     /// <summary>
     /// Common Record for Error Handling

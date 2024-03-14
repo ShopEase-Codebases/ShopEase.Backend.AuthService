@@ -5,11 +5,15 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopEase.Backend.PassportService.API", "ShopEase.Backend.PassportService.API\ShopEase.Backend.PassportService.API.csproj", "{FE9299DC-BBDE-438E-8074-65C912C98B81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopEase.Backend.PassportService.Application", "ShopEase.Backend.PassportService.Application\ShopEase.Backend.PassportService.Application.csproj", "{48FD2286-99EC-45AE-BFB2-92DFEEF86287}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopEase.Backend.PassportService.Application", "ShopEase.Backend.PassportService.Application\ShopEase.Backend.PassportService.Application.csproj", "{48FD2286-99EC-45AE-BFB2-92DFEEF86287}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopEase.Backend.PassportService.Core", "ShopEase.Backend.PassportService.Core\ShopEase.Backend.PassportService.Core.csproj", "{C6123DEE-517D-4360-823F-F03A9FC8D391}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopEase.Backend.PassportService.Core", "ShopEase.Backend.PassportService.Core\ShopEase.Backend.PassportService.Core.csproj", "{C6123DEE-517D-4360-823F-F03A9FC8D391}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopEase.Backend.PassportService.Infrastructure", "ShopEase.Backend.PassportService.Infrastructure\ShopEase.Backend.PassportService.Infrastructure.csproj", "{00C8820A-5230-4CEF-B821-0BCBB915E532}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopEase.Backend.PassportService.Infrastructure", "ShopEase.Backend.PassportService.Infrastructure\ShopEase.Backend.PassportService.Infrastructure.csproj", "{00C8820A-5230-4CEF-B821-0BCBB915E532}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopEase.Backend.PassportService.Persistence", "ShopEase.Backend.PassportService.Persistence\ShopEase.Backend.PassportService.Persistence.csproj", "{B857A1DB-53FB-4EA0-A1C2-873911C4C023}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopEase.Backend.Common", "ShopEase.Backend.Common\ShopEase.Backend.Common.csproj", "{6CAE3FCF-B6E7-4258-A9A5-E9EE21BE392F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{00C8820A-5230-4CEF-B821-0BCBB915E532}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00C8820A-5230-4CEF-B821-0BCBB915E532}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00C8820A-5230-4CEF-B821-0BCBB915E532}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B857A1DB-53FB-4EA0-A1C2-873911C4C023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B857A1DB-53FB-4EA0-A1C2-873911C4C023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B857A1DB-53FB-4EA0-A1C2-873911C4C023}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B857A1DB-53FB-4EA0-A1C2-873911C4C023}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CAE3FCF-B6E7-4258-A9A5-E9EE21BE392F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CAE3FCF-B6E7-4258-A9A5-E9EE21BE392F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CAE3FCF-B6E7-4258-A9A5-E9EE21BE392F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CAE3FCF-B6E7-4258-A9A5-E9EE21BE392F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
