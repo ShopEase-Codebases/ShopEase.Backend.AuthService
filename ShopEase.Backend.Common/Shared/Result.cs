@@ -5,25 +5,6 @@
     /// </summary>
     public class Result
     {
-        #region Properties
-
-        /// <summary>
-        /// States Success Result
-        /// </summary>
-        public bool IsSuccess { get; }
-
-        /// <summary>
-        /// States Failure Result
-        /// </summary>
-        public bool IsFailure => !IsSuccess;
-
-        /// <summary>
-        /// Carries Error incase of Failure
-        /// </summary>
-        public Error Error { get; }
-
-        #endregion
-
         #region Constructor
 
         /// <summary>
@@ -42,6 +23,25 @@
             IsSuccess = isSuccess;
             Error = error;
         }
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// States Success Result
+        /// </summary>
+        public bool IsSuccess { get; }
+
+        /// <summary>
+        /// States Failure Result
+        /// </summary>
+        public bool IsFailure => !IsSuccess;
+
+        /// <summary>
+        /// Carries Error incase of Failure
+        /// </summary>
+        public Error Error { get; }
 
         #endregion
 

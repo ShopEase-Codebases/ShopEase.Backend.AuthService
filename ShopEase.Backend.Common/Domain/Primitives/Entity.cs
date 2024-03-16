@@ -6,11 +6,6 @@
     public abstract class Entity : IEquatable<Entity>
     {
         /// <summary>
-        /// Identifier Property for the Entities
-        /// </summary>
-        public Guid Id { get; private init; }
-
-        /// <summary>
         /// Constructor to initialize 
         /// the base properties of any entity
         /// </summary>
@@ -19,6 +14,11 @@
         {
             Id = id;
         }
+
+        /// <summary>
+        /// Identifier Property for the Entities
+        /// </summary>
+        public Guid Id { get; private init; }
 
         public bool Equals(Entity? other)
         {

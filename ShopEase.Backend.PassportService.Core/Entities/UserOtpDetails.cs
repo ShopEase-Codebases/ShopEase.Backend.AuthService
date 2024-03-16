@@ -1,20 +1,39 @@
 ﻿using ShopEase.Backend.Common.Domain.Primitives;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShopEase.Backend.PassportService.Core.Entities
 {
     /// <summary>
     /// UserOtpDetails Entity Class
     /// </summary>
-    [Table("UserOtpDetails", Schema = "Passport")]
-    public sealed class UserOtpDetails : Entity, IAudit
+    public sealed class UserOtpDetails : AggregateRoot
     {
+        #region Constructor
+
+        /// <summary>
+        /// Constructor to initailize UserOtpDetails entity
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="email"></param>
+        /// <param name="otp"></param>
+        /// <param name="otpExpiresOnUtc"></param>
+        private UserOtpDetails(Guid id, string email, string otp, DateTime otpExpiresOnUtc) 
+            : base(id)
+        {
+            Email = email;
+            Otp = otp;
+            IsUsed = false;
+            OtpRequestedOnUtc = DateTime.UtcNow;
+            OtpExpiresOnUtc = otpExpiresOnUtc;
+        }
+
+        #endregion
+
         #region Properties
 
         /// <summary>
-        /// Id of User Entity
+        /// Email address
         /// </summary>
-        public Guid UserId { get; private set; }
+        public string Email { get; private set; }
 
         /// <summary>
         /// OTP
@@ -27,46 +46,19 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         public bool IsUsed { get; private set; }
 
         /// <summary>
+        /// OTP Requested On UTC
+        /// </summary>
+        public DateTime OtpRequestedOnUtc { get; private set; }
+
+        /// <summary>
         /// OTP Expires On UTC
         /// </summary>
         public DateTime OtpExpiresOnUtc { get; private set; }
 
         /// <summary>
-        /// CreatedOn DateTime UTC
+        /// OTP Used On UTC
         /// </summary>
-        public DateTime CreatedOnUtc { get; set; }
-
-        /// <summary>
-        /// UpdatedOn DateTime UTC
-        /// </summary>
-        public DateTime UpdatedOnUtc { get; set; }
-
-        /// <summary>
-        /// RowStatus
-        /// </summary>
-        public bool RowStatus { get; set; }
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        /// Constructor to initailize UserOtpDetails entity
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="userId"></param>
-        /// <param name="otp"></param>
-        /// <param name="otpExpiresOnUtc"></param>
-        private UserOtpDetails(Guid id, Guid userId, string otp, DateTime otpExpiresOnUtc) 
-            : base(id)
-        {
-            UserId = userId;
-            Otp = otp;
-            IsUsed = false;
-            OtpExpiresOnUtc = otpExpiresOnUtc;
-            CreatedOnUtc = DateTime.UtcNow;
-            UpdatedOnUtc = DateTime.UtcNow;
-        }
+        public DateTime? OtpUsedOnUtc { get; private set; }
 
         #endregion
 
@@ -75,14 +67,23 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <summary>
         /// To Create New UserOtpDetails
         /// </summary>
-        /// <param name="userId"></param>
+        /// <param name="email"></param>
         /// <param name="otp"></param>
         /// <param name="otpExpiresOnUtc"></param>
         /// <returns></returns>
-        public static UserOtpDetails Create(Guid userId, string otp, DateTime otpExpiresOnUtc)
+        public static UserOtpDetails Create(string email, string otp, DateTime otpExpiresOnUtc)
         {
-            return new UserOtpDetails(Guid.NewGuid(), userId, otp, otpExpiresOnUtc);
+            return new UserOtpDetails(Guid.NewGuid(), email, otp, otpExpiresOnUtc);
         }
+
+        /// <summary>
+        /// To make one OTP used
+        /// </summary>
+        public void OtpUsed()
+        {
+            IsUsed = true;
+            OtpUsedOnUtc = DateTime.UtcNow;
+        } 
 
         #endregion
     }
