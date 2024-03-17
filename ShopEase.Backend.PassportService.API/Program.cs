@@ -2,6 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using ShopEase.Backend.PassportService.Application.Helpers;
 using ShopEase.Backend.PassportService.Persistence;
 using Scrutor;
+using MediatR;
+using ShopEase.Backend.Common.Messaging.Abstractions;
+using ShopEase.Backend.Common.Messaging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +28,14 @@ builder.Services
                     .UsingRegistrationStrategy(RegistrationStrategy.Skip)
                     .AsImplementedInterfaces()
                     .WithScopedLifetime());
+
+// Adding Mediator
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ApiService).Assembly));
+builder.Services.AddScoped<IApiService, ApiService>(c =>
+{
+    var mediator = c.GetRequiredService<IMediator>();
+    return new ApiService(mediator);
+});
 
 builder.Services.AddControllers();
 

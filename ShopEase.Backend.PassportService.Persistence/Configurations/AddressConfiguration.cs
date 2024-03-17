@@ -21,7 +21,11 @@ namespace ShopEase.Backend.PassportService.Persistence.Configurations
 
             builder
                 .Property(address => address.ZipCode)
-                .HasConversion(zipCode => zipCode.Value, value => ZipCode.Create(value).Value);
+                .HasConversion(zipCode => zipCode.Value, value => ZipCode.Create(value).Value)
+                .HasMaxLength(ZipCode.MaxLength);
+
+            builder
+                .HasQueryFilter(address => address.RowStatus);
         }
     }
 }

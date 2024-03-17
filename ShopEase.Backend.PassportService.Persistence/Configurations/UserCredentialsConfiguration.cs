@@ -12,6 +12,9 @@ namespace ShopEase.Backend.PassportService.Persistence.Configurations
             builder.ToTable(TableNames.UserCredentials, schema: TableSchemas.Passport);
             
             builder.HasKey(x => x.Id);
+
+            builder
+                .HasQueryFilter(creds => creds.RowStatus);
         }
     }
 }

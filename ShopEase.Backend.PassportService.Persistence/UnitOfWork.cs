@@ -51,6 +51,19 @@ namespace ShopEase.Backend.PassportService.Persistence
                         .Property(x => x.UpdatedOnUtc)
                         .CurrentValue = DateTime.UtcNow;
                 }
+
+                if(entity.State == EntityState.Deleted)
+                {
+                    entity.State = EntityState.Modified;
+
+                    entity
+                        .Property(x => x.RowStatus)
+                        .CurrentValue = false;
+
+                    entity
+                        .Property(x => x.UpdatedOnUtc)
+                        .CurrentValue = DateTime.UtcNow;
+                }
             }
         }
     }

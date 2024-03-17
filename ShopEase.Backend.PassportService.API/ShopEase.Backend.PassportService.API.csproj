@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\**" />
-    <Content Remove="Controllers\**" />
-    <EmbeddedResource Remove="Controllers\**" />
-    <None Remove="Controllers\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -26,6 +19,10 @@
     <ProjectReference Include="..\ShopEase.Backend.PassportService.Application\ShopEase.Backend.PassportService.Application.csproj" />
     <ProjectReference Include="..\ShopEase.Backend.PassportService.Infrastructure\ShopEase.Backend.PassportService.Infrastructure.csproj" />
     <ProjectReference Include="..\ShopEase.Backend.PassportService.Persistence\ShopEase.Backend.PassportService.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Contracts\" />
   </ItemGroup>
 
 </Project>

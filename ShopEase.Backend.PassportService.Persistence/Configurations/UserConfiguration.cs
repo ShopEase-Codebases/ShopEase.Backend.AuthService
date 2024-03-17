@@ -21,7 +21,8 @@ namespace ShopEase.Backend.PassportService.Persistence.Configurations
 
             builder
                 .Property(user => user.Email)
-                .HasConversion(email => email.Value, value => Email.Create(value).Value);
+                .HasConversion(email => email.Value, value => Email.Create(value).Value)
+                .HasMaxLength(Email.MaxLength);
 
             builder
                 .Property(user => user.MobileNumber)
@@ -46,6 +47,9 @@ namespace ShopEase.Backend.PassportService.Persistence.Configurations
                 .HasMany(user => user.Addresses)
                 .WithOne()
                 .HasForeignKey(address => address.UserId);
+
+            builder
+                .HasQueryFilter(user => user.RowStatus);
         }
     }
 }

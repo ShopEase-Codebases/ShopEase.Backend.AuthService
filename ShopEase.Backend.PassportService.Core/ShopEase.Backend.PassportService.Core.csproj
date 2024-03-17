@@ -10,8 +10,4 @@
     <ProjectReference Include="..\ShopEase.Backend.Common\ShopEase.Backend.Common.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Enums\" />
-  </ItemGroup>
-
 </Project>

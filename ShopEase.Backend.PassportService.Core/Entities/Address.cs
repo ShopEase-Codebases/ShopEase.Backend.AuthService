@@ -16,22 +16,22 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <param name="id"></param>
         /// <param name="userId"></param>
         /// <param name="name"></param>
-        /// <param name="address1"></param>
-        /// <param name="address2"></param>
+        /// <param name="addressLine1"></param>
+        /// <param name="addressLine2"></param>
         /// <param name="cityId"></param>
         /// <param name="stateId"></param>
         /// <param name="zipCode"></param>
         /// <param name="countryId"></param>
         /// <param name="addressTypeId"></param>
         /// <param name="isDefault"></param>
-        internal Address(Guid id, Guid userId, Name name, string address1, string address2, 
+        internal Address(Guid id, Guid userId, Name name, string addressLine1, string addressLine2, 
             int cityId, int stateId, ZipCode zipCode, int countryId, int addressTypeId, bool isDefault) 
             : base(id)
         {
             UserId = userId;
             Name = name;
-            AddressLine1 = address1;
-            AddressLine2 = address2;
+            AddressLine1 = addressLine1;
+            AddressLine2 = addressLine2;
             CityId = cityId;
             StateId = stateId;
             ZipCode = zipCode;

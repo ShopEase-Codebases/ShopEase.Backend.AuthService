@@ -5,6 +5,11 @@
     /// </summary>
     public sealed class OtpDetails
     {
+        public const int OtpMaxLength = 6;
+        public const int EmailMaxLength = 50;
+
+        #region Properties
+
         /// <summary>
         /// Identifier Property for OtpDetails
         /// </summary>
@@ -39,5 +44,7 @@
         /// OTP Used On UTC
         /// </summary>
         public DateTime? OtpUsedOnUtc { get; set; }
+
+        #endregion
     }
 }

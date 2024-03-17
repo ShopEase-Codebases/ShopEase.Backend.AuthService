@@ -27,7 +27,7 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <param name="email"></param>
         /// <param name="mobileNumber"></param>
         /// <param name="altMobileNumber"></param>
-        private User(Guid id, Name name, Email email, MobileNumber mobileNumber, MobileNumber altMobileNumber)
+        private User(Guid id, Name name, Email email, MobileNumber mobileNumber, MobileNumber? altMobileNumber)
             : base(id)
         {
             Name = name;
@@ -58,7 +58,7 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <summary>
         /// Alternate Mobile Number
         /// </summary>
-        public MobileNumber AltMobileNumber { get; private set; }
+        public MobileNumber? AltMobileNumber { get; private set; }
 
         /// <summary>
         /// CreatedOn DateTime UTC
@@ -97,7 +97,7 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <param name="mobileNumber"></param>
         /// <param name="altMobileNumber"></param>
         /// <returns></returns>
-        public static User CreateUser(Name name, Email email, MobileNumber mobileNumber, MobileNumber altMobileNumber)
+        public static User CreateUser(Name name, Email email, MobileNumber mobileNumber, MobileNumber? altMobileNumber)
         {
             return new User(Guid.NewGuid(), name, email, mobileNumber, altMobileNumber);
         }

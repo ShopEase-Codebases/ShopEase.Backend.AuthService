@@ -12,6 +12,14 @@ namespace ShopEase.Backend.PassportService.Persistence.Configurations
             builder.ToTable(TableNames.OtpDetails, schema: TableSchemas.Passport);
 
             builder.HasKey(otp => otp.Id);
+
+            builder
+                .Property(otp => otp.Otp)
+                .HasMaxLength(OtpDetails.OtpMaxLength);
+
+            builder
+                .Property(otp => otp.Email)
+                .HasMaxLength(OtpDetails.EmailMaxLength);
         }
     }
 }

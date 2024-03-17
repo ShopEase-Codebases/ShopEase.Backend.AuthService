@@ -12,6 +12,8 @@ namespace ShopEase.Backend.PassportService.Core.Errors
             public static readonly Error Empty = new("Email.Empty", "Email is empty");
 
             public static readonly Error InvalidFormat = new("Email.InvalidFormat", "Email format is invalid");
+
+            public static readonly Error TooLong = new("Email.TooLong", "Email is too long");
         }
 
         /// <summary>
@@ -44,6 +46,20 @@ namespace ShopEase.Backend.PassportService.Core.Errors
             public static readonly Error Empty = new("ZipCode.Empty", "ZipCode is empty");
 
             public static readonly Error InvalidFormat = new("ZipCode.InvalidFormat", "ZipCode format is invalid");
+
+            public static readonly Error TooLong = new("ZipCode.TooLong", "ZipCode is too long");
+        }
+
+        /// <summary>
+        /// Errors Related to Otp Value Object
+        /// </summary>
+        public readonly struct Otp
+        {
+            public static readonly Error Empty = new("Otp.Empty", "Otp is empty");
+
+            public static readonly Error InvalidFormat = new("Otp.InvalidFormat", "Otp format is invalid");
+
+            public static readonly Error TooLong = new("Otp.TooLong", "Otp is too long");
         }
     }
 }
