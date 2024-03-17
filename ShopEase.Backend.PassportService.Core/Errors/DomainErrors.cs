@@ -35,5 +35,15 @@ namespace ShopEase.Backend.PassportService.Core.Errors
 
             public static readonly Error TooLong = new("MobileNumber.TooLong", "MobileNumber is too long");
         }
+
+        /// <summary>
+        /// Errors Related to ZipCode Value Object
+        /// </summary>
+        public readonly struct ZipCode
+        {
+            public static readonly Error Empty = new("ZipCode.Empty", "ZipCode is empty");
+
+            public static readonly Error InvalidFormat = new("ZipCode.InvalidFormat", "ZipCode format is invalid");
+        }
     }
 }

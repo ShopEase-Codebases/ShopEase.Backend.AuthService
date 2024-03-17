@@ -26,9 +26,6 @@ namespace ShopEase.Backend.PassportService.Core.Entities
             PasswordSalt = passwordSalt;
             RefreshToken = refreshToken;
             RefreshTokenExpirationTimeUtc = refreshTokenExpirationTimeUtc;
-            CreatedOnUtc = DateTime.UtcNow;
-            UpdatedOnUtc = DateTime.UtcNow;
-            RowStatus = true;
         }
 
         #endregion
@@ -68,7 +65,7 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <summary>
         /// UpdatedOn DateTime UTC
         /// </summary>
-        public DateTime UpdatedOnUtc { get; set; }
+        public DateTime? UpdatedOnUtc { get; set; }
 
         /// <summary>
         /// RowStatus

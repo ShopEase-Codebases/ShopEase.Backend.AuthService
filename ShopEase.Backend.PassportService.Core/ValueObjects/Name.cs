@@ -6,7 +6,7 @@ namespace ShopEase.Backend.PassportService.Core.ValueObjects
 {
     public sealed class Name : ValueObject
     {
-        private const int MaxLength = 50;
+        public const int MaxLength = 50;
 
         private Name(string value) => Value = value;
 

@@ -34,9 +34,6 @@ namespace ShopEase.Backend.PassportService.Core.Entities
             Email = email;
             MobileNumber = mobileNumber;
             AltMobileNumber = altMobileNumber;
-            CreatedOnUtc = DateTime.UtcNow;
-            UpdatedOnUtc = DateTime.UtcNow;
-            RowStatus = true;
         }
 
         #endregion
@@ -71,7 +68,7 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <summary>
         /// UpdatedOn DateTime UTC
         /// </summary>
-        public DateTime UpdatedOnUtc { get; set; }
+        public DateTime? UpdatedOnUtc { get; set; }
 
         /// <summary>
         /// RowStatus
@@ -86,7 +83,7 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <summary>
         /// UserCredentials
         /// </summary>
-        public UserCredentials UserCredentials { get; private set; }
+        public UserCredentials? UserCredentials { get; private set; }
 
         #endregion
 
@@ -134,8 +131,8 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <param name="addressTypeId"></param>
         /// <param name="isDefault"></param>
         /// <returns></returns>
-        public Address AddAddress(Guid userId, string name, string address1, string address2,
-            int cityId, int stateId, string zipCode, int countryId, int addressTypeId,
+        public Address AddAddress(Guid userId, Name name, string address1, string address2,
+            int cityId, int stateId, ZipCode zipCode, int countryId, int addressTypeId,
             bool isDefault)
         {
             if (isDefault && 

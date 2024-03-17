@@ -1,4 +1,5 @@
 ﻿using ShopEase.Backend.PassportService.Core.Entities;
+using ShopEase.Backend.PassportService.Core.ValueObjects;
 
 namespace ShopEase.Backend.PassportService.Core.RepositoryAbstrations
 {
@@ -6,7 +7,11 @@ namespace ShopEase.Backend.PassportService.Core.RepositoryAbstrations
     {
         Task<User?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
-        Task<bool> IsEmailUniqueAsync(string Email, CancellationToken cancellationToken = default);
+        Task<User?> GetByIdAsyncWithCredentials(Guid id, CancellationToken cancellationToken = default);
+
+        Task<User?> GetByIdAsyncWithAddress(Guid id, CancellationToken cancellationToken = default);
+
+        Task<bool> IsEmailUniqueAsync(Email email, CancellationToken cancellationToken = default);
 
         void Add(User user);
 

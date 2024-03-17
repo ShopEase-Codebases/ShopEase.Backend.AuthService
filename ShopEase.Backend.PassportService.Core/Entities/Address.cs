@@ -1,4 +1,5 @@
 ﻿using ShopEase.Backend.Common.Domain.Primitives;
+using ShopEase.Backend.PassportService.Core.ValueObjects;
 
 namespace ShopEase.Backend.PassportService.Core.Entities
 {
@@ -23,8 +24,8 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <param name="countryId"></param>
         /// <param name="addressTypeId"></param>
         /// <param name="isDefault"></param>
-        internal Address(Guid id, Guid userId, string name, string address1, string address2, 
-            int cityId, int stateId, string zipCode, int countryId, int addressTypeId, bool isDefault) 
+        internal Address(Guid id, Guid userId, Name name, string address1, string address2, 
+            int cityId, int stateId, ZipCode zipCode, int countryId, int addressTypeId, bool isDefault) 
             : base(id)
         {
             UserId = userId;
@@ -37,9 +38,6 @@ namespace ShopEase.Backend.PassportService.Core.Entities
             CountryId = countryId;
             AddressTypeId = addressTypeId;
             IsDefault = isDefault;
-            CreatedOnUtc = DateTime.UtcNow;
-            UpdatedOnUtc = DateTime.UtcNow;
-            RowStatus = true;
         }
 
         #endregion
@@ -54,7 +52,7 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <summary>
         /// Full Name
         /// </summary>
-        public string Name { get; private set; }
+        public Name Name { get; private set; }
 
         /// <summary>
         /// AddressLine1
@@ -79,7 +77,7 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <summary>
         /// ZipCode
         /// </summary>
-        public string ZipCode { get; private set; }
+        public ZipCode ZipCode { get; private set; }
 
         /// <summary>
         /// Country
@@ -104,7 +102,7 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <summary>
         /// UpdatedOn DateTime UTC
         /// </summary>
-        public DateTime UpdatedOnUtc { get; set; }
+        public DateTime? UpdatedOnUtc { get; set; }
 
         /// <summary>
         /// RowStatus

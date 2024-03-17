@@ -1,4 +1,4 @@
-﻿namespace ShopEase.Backend.PassportService.Persistence.OtpDetails
+﻿namespace ShopEase.Backend.PassportService.Persistence.Models
 {
     /// <summary>
     /// Anemic class for OtpDetails Object

@@ -11,5 +11,5 @@ namespace ShopEase.Backend.PassportService.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) =>
             modelBuilder.ApplyConfigurationsFromAssembly(AssemblyReference.Assembly);
-;    }
+    }
 }

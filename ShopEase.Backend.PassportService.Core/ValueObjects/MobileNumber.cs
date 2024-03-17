@@ -9,7 +9,7 @@ namespace ShopEase.Backend.PassportService.Core.ValueObjects
     {
         private const string StandardRegex = "^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$";
 
-        private const int MaxLength = 17;
+        public const int MaxLength = 17;
 
         private MobileNumber(string value) => Value = value;
 
