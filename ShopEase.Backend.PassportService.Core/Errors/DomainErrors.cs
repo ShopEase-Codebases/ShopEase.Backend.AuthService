@@ -9,11 +9,11 @@ namespace ShopEase.Backend.PassportService.Core.Errors
         /// </summary>
         public readonly struct Email
         {
-            public static readonly Error Empty = new("Email.Empty", "Email is empty");
+            public static readonly Error Empty = Error.Validation("Email.Empty", "Email is empty");
 
-            public static readonly Error InvalidFormat = new("Email.InvalidFormat", "Email format is invalid");
+            public static readonly Error InvalidFormat = Error.Validation("Email.InvalidFormat", "Email format is invalid");
 
-            public static readonly Error TooLong = new("Email.TooLong", "Email is too long");
+            public static readonly Error TooLong = Error.Validation("Email.TooLong", "Email is too long");
         }
 
         /// <summary>
@@ -21,9 +21,9 @@ namespace ShopEase.Backend.PassportService.Core.Errors
         /// </summary>
         public readonly struct Name
         {
-            public static readonly Error Empty = new("Name.Empty", "Name is empty");
+            public static readonly Error Empty = Error.Validation("Name.Empty", "Name is empty");
 
-            public static readonly Error TooLong = new("Name.TooLong", "Name is too long");
+            public static readonly Error TooLong = Error.Validation("Name.TooLong", "Name is too long");
         }
 
         /// <summary>
@@ -31,11 +31,11 @@ namespace ShopEase.Backend.PassportService.Core.Errors
         /// </summary>
         public readonly struct MobileNumber
         {
-            public static readonly Error Empty = new("MobileNumber.Empty", "MobileNumber is empty");
+            public static readonly Error Empty = Error.Validation("MobileNumber.Empty", "MobileNumber is empty");
 
-            public static readonly Error InvalidFormat = new("MobileNumber.InvalidFormat", "MobileNumber format is invalid");
+            public static readonly Error InvalidFormat = Error.Validation("MobileNumber.InvalidFormat", "MobileNumber format is invalid");
 
-            public static readonly Error TooLong = new("MobileNumber.TooLong", "MobileNumber is too long");
+            public static readonly Error TooLong = Error.Validation("MobileNumber.TooLong", "MobileNumber is too long");
         }
 
         /// <summary>
@@ -43,11 +43,11 @@ namespace ShopEase.Backend.PassportService.Core.Errors
         /// </summary>
         public readonly struct ZipCode
         {
-            public static readonly Error Empty = new("ZipCode.Empty", "ZipCode is empty");
+            public static readonly Error Empty = Error.Validation("ZipCode.Empty", "ZipCode is empty");
 
-            public static readonly Error InvalidFormat = new("ZipCode.InvalidFormat", "ZipCode format is invalid");
+            public static readonly Error InvalidFormat = Error.Validation("ZipCode.InvalidFormat", "ZipCode format is invalid");
 
-            public static readonly Error TooLong = new("ZipCode.TooLong", "ZipCode is too long");
+            public static readonly Error TooLong = Error.Validation("ZipCode.TooLong", "ZipCode is too long");
         }
 
         /// <summary>
@@ -55,11 +55,11 @@ namespace ShopEase.Backend.PassportService.Core.Errors
         /// </summary>
         public readonly struct Otp
         {
-            public static readonly Error Empty = new("Otp.Empty", "Otp is empty");
+            public static readonly Error Empty = Error.Validation("Otp.Empty", "Otp is empty");
 
-            public static readonly Error InvalidFormat = new("Otp.InvalidFormat", "Otp format is invalid");
+            public static readonly Error InvalidFormat = Error.Validation("Otp.InvalidFormat", "Otp format is invalid");
 
-            public static readonly Error TooLong = new("Otp.TooLong", "Otp is too long");
+            public static readonly Error TooLong = Error.Validation("Otp.TooLong", "Otp is too long");
         }
     }
 }

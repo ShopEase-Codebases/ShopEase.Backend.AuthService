@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ShopEase.Backend.PassportService.Core\ShopEase.Backend.PassportService.Core.csproj" />
+    <ProjectReference Include="..\ShopEase.Backend.PassportService.Application\ShopEase.Backend.PassportService.Application.csproj" />
   </ItemGroup>
 
 </Project>

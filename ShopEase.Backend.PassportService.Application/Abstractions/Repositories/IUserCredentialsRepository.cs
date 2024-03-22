@@ -1,6 +1,6 @@
 ﻿using ShopEase.Backend.PassportService.Core.Entities;
 
-namespace ShopEase.Backend.PassportService.Core.RepositoryAbstrations
+namespace ShopEase.Backend.PassportService.Application.Abstractions.Repositories
 {
     public interface IUserCredentialsRepository
     {

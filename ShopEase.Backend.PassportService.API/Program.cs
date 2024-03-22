@@ -1,47 +1,18 @@
-using Microsoft.EntityFrameworkCore;
-using ShopEase.Backend.PassportService.Application.Helpers;
+using ShopEase.Backend.Common;
+using ShopEase.Backend.PassportService.API;
+using ShopEase.Backend.PassportService.Application;
+using ShopEase.Backend.PassportService.Infrastructure;
 using ShopEase.Backend.PassportService.Persistence;
-using Scrutor;
-using MediatR;
-using ShopEase.Backend.Common.Messaging.Abstractions;
-using ShopEase.Backend.Common.Messaging;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-// Configure Application Settings
-builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
-builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
-
-// Register Application DB Context
-var connectionString = builder.Configuration.GetConnectionString("ShopEaseDB");
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
-
-// Registers all the Concrete implementations as all of its interfaces
 builder.Services
-            .Scan(selector => selector
-                    .FromAssemblies(
-                            ShopEase.Backend.PassportService.Infrastructure.AssemblyReference.Assembly, 
-                            ShopEase.Backend.PassportService.Persistence.AssemblyReference.Assembly)
-                    .AddClasses(false)
-                    .UsingRegistrationStrategy(RegistrationStrategy.Skip)
-                    .AsImplementedInterfaces()
-                    .WithScopedLifetime());
+            .AddApi()
+            .AddApplication()
+            .AddInfrastructure(builder.Configuration)
+            .AddPersistence(builder.Configuration);
 
-// Adding Mediator
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(ApiService).Assembly));
-builder.Services.AddScoped<IApiService, ApiService>(c =>
-{
-    var mediator = c.GetRequiredService<IMediator>();
-    return new ApiService(mediator);
-});
-
-builder.Services.AddControllers();
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddCQRSMessaging(ShopEase.Backend.PassportService.Application.AssemblyReference.Assembly);
 
 var app = builder.Build();
 

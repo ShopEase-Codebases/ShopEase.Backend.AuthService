@@ -1,4 +1,4 @@
-﻿namespace ShopEase.Backend.PassportService.Application.Helpers
+﻿namespace ShopEase.Backend.PassportService.Infrastructure.Helpers
 {
     public class EmailSettings
     {

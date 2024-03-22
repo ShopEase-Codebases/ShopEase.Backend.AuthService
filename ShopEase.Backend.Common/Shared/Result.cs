@@ -1,4 +1,6 @@
-﻿namespace ShopEase.Backend.Common.Shared
+﻿using System.Security.AccessControl;
+
+namespace ShopEase.Backend.Common.Shared
 {
     /// <summary>
     /// Class for Defining Result Type

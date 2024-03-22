@@ -1,7 +1,7 @@
 ﻿using ShopEase.Backend.PassportService.Core.Entities;
 using ShopEase.Backend.PassportService.Core.ValueObjects;
 
-namespace ShopEase.Backend.PassportService.Core.RepositoryAbstrations
+namespace ShopEase.Backend.PassportService.Application.Abstractions.Repositories
 {
     public interface IUserRepository
     {
