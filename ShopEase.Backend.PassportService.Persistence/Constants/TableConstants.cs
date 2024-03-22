@@ -11,6 +11,8 @@
             internal const string Addresses = nameof(Addresses);
 
             internal const string OtpDetails = nameof(OtpDetails);
+
+            internal const string OutboxMessage = nameof(OutboxMessage);
         }
 
         internal struct TableSchemas

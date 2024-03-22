@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
                 .AddApplication()
                 .AddInfrastructure(builder.Configuration)
                 .AddPersistence(builder.Configuration)
-                .AddCQRSMessaging(ShopEase.Backend.PassportService.Application.AssemblyReference.Assembly);
+                .AddShopEaseCommon(ShopEase.Backend.PassportService.Application.AssemblyReference.Assembly);
 }
 
 {

@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Newtonsoft.Json;
 using ShopEase.Backend.Common.Domain;
 using ShopEase.Backend.Common.Domain.Primitives;
+using ShopEase.Backend.PassportService.Persistence.Models.Outbox;
 
 namespace ShopEase.Backend.PassportService.Persistence
 {
@@ -19,6 +21,7 @@ namespace ShopEase.Backend.PassportService.Persistence
         /// <returns></returns>
         public Task SaveChangesAsync(CancellationToken cancellationToken = default)
         {
+            InsertDomainEventsIntoOutboxMessages();
             UpdateAuditableEntities();
 
             return _appDbContext.SaveChangesAsync(cancellationToken);
@@ -65,6 +68,46 @@ namespace ShopEase.Backend.PassportService.Persistence
                         .CurrentValue = DateTime.UtcNow;
                 }
             }
+        }
+
+        /// <summary>
+        /// Converts DomainEvents into OutboxMessages
+        /// Inserts OutboxMessages into the DB
+        /// Using ChangeTracker of EF Core
+        /// </summary>
+        private void InsertDomainEventsIntoOutboxMessages()
+        {
+            var outboxMessages = _appDbContext
+                                    .ChangeTracker
+                                    .Entries<AggregateRoot>()
+                                    .Select(entry => entry.Entity)
+                                    .SelectMany(GetDomainEvents)
+                                    .Select(CreateOutboxMessage)
+                                    .ToList();
+
+            _appDbContext.Set<OutboxMessage>().AddRange(outboxMessages);
+        }
+
+        private IReadOnlyCollection<IDomainEvent> GetDomainEvents(AggregateRoot aggregateRoot)
+        {
+            var domainEvents = aggregateRoot.GetDomainEvents();
+            aggregateRoot.ClearDomainEvents();
+            return domainEvents;
+        }
+
+        private OutboxMessage CreateOutboxMessage(IDomainEvent domainEvent)
+        {
+            return new OutboxMessage
+            {
+                Id = Guid.NewGuid(),
+                OccurredOnUtc = DateTime.UtcNow,
+                Content = JsonConvert.SerializeObject(
+                                            domainEvent,
+                                            new JsonSerializerSettings
+                                            {
+                                                TypeNameHandling = TypeNameHandling.All
+                                            })
+            };
         }
     }
 }
