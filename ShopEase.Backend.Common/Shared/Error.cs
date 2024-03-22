@@ -9,9 +9,9 @@
     {
         public static readonly Error None = new(string.Empty, string.Empty, ErrorType.None);
 
-        public static readonly Error NullValue = new("Error.NullValue", "The specified result value is null.", ErrorType.None);
+        public static readonly Error NullValue = new("Error.NullValue", "The specified result value is null.", ErrorType.Failure);
 
-        public static readonly Error ConditionNotMet = new("Error.ConditionNotMet", "The specified condition was not met.", ErrorType.None);
+        public static readonly Error ConditionNotMet = new("Error.ConditionNotMet", "The specified condition was not met.", ErrorType.Failure);
 
         public static readonly Error ValidationError = new("ValidationError", "A validation Error occurred.", ErrorType.Validation);
 

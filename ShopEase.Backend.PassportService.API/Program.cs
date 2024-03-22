@@ -6,27 +6,26 @@ using ShopEase.Backend.PassportService.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services
-            .AddApi()
-            .AddApplication()
-            .AddInfrastructure(builder.Configuration)
-            .AddPersistence(builder.Configuration);
-
-builder.Services.AddCQRSMessaging(ShopEase.Backend.PassportService.Application.AssemblyReference.Assembly);
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    builder.Services
+                .AddApi()
+                .AddApplication()
+                .AddInfrastructure(builder.Configuration)
+                .AddPersistence(builder.Configuration)
+                .AddCQRSMessaging(ShopEase.Backend.PassportService.Application.AssemblyReference.Assembly);
 }
 
-app.UseHttpsRedirection();
+{
+    var app = builder.Build();
 
-app.UseAuthorization();
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
 
-app.MapControllers();
-
-app.Run();
+    app.UseHttpsRedirection();
+    app.UseAuthorization();
+    app.MapControllers();
+    app.Run();
+}

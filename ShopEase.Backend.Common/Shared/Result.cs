@@ -69,11 +69,24 @@ namespace ShopEase.Backend.Common.Shared
         /// <returns></returns>
         public static Result<TValue> Failure<TValue>(Error error) => new(default, false, error);
 
+        /// <summary>
+        /// Creates a Success Result if the Condition Passed is true
+        /// Otherwise Creates a Failure Result with ConditionNotMet Error
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <returns></returns>
         public static Result Create(bool condition) => condition ?
                                                         Success() : Failure(Error.ConditionNotMet);
 
+        /// <summary>
+        /// Creates a Success Result with the Value if the value is not null
+        /// Otherwise Creates a Failure Result with NullValue Error
+        /// </summary>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static Result<TValue> Create<TValue>(TValue? value) => value is not null ?
-                                                                        Success<TValue>(value) : Failure<TValue>(Error.NullValue);
+                                                                        Success(value) : Failure<TValue>(Error.NullValue);
 
         #endregion
     }
