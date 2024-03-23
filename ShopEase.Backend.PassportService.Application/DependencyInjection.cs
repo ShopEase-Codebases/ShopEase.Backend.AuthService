@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ShopEase.Backend.PassportService.Application
@@ -7,6 +7,8 @@ namespace ShopEase.Backend.PassportService.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
+            services.AddValidatorsFromAssembly(AssemblyReference.Assembly, includeInternalTypes: true);
+
             return services;
         }
     }

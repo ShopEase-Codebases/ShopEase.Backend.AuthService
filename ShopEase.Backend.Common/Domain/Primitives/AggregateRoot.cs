@@ -1,4 +1,6 @@
-﻿namespace ShopEase.Backend.Common.Domain.Primitives
+﻿using ShopEase.Backend.Common.Messaging.Abstractions;
+
+namespace ShopEase.Backend.Common.Domain.Primitives
 {
     /// <summary>
     /// Base Class for Aggregate Roots

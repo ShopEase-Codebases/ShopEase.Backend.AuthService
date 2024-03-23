@@ -3,7 +3,8 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Newtonsoft.Json;
 using ShopEase.Backend.Common.Domain;
 using ShopEase.Backend.Common.Domain.Primitives;
-using ShopEase.Backend.PassportService.Persistence.Models.Outbox;
+using ShopEase.Backend.Common.Messaging.Abstractions;
+using ShopEase.Backend.Common.Messaging.Outbox;
 
 namespace ShopEase.Backend.PassportService.Persistence
 {

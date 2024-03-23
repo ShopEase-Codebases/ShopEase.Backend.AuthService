@@ -1,6 +1,4 @@
-﻿using ShopEase.Backend.Common.Messaging.Abstractions;
-
-namespace ShopEase.Backend.Common.Domain.Primitives
+﻿namespace ShopEase.Backend.Common.Messaging.Abstractions
 {
     /// <summary>
     /// Interface to Represent an Domain Event

@@ -1,7 +1,8 @@
 ﻿using ShopEase.Backend.Common.Domain.Primitives;
+using ShopEase.Backend.PassportService.Core.Entities;
 using ShopEase.Backend.PassportService.Core.ValueObjects;
 
-namespace ShopEase.Backend.PassportService.Core.Entities
+namespace ShopEase.Backend.PassportService.Core.Aggregate
 {
     /// <summary>
     /// User Entity Class
@@ -135,7 +136,7 @@ namespace ShopEase.Backend.PassportService.Core.Entities
             int cityId, int stateId, ZipCode zipCode, int countryId, int addressTypeId,
             bool isDefault)
         {
-            if (isDefault && 
+            if (isDefault &&
                 Addresses is not null && Addresses.Any(address => address.IsDefault))
             {
                 Addresses.FirstOrDefault(address => address.IsDefault)?.SetOrUnsetDefault();

@@ -9,10 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services
                 .AddApi()
-                .AddApplication()
-                .AddInfrastructure(builder.Configuration)
+                .AddShopEaseCommon(ShopEase.Backend.PassportService.Application.AssemblyReference.Assembly)
                 .AddPersistence(builder.Configuration)
-                .AddShopEaseCommon(ShopEase.Backend.PassportService.Application.AssemblyReference.Assembly);
+                .AddInfrastructure(builder.Configuration)
+                .AddApplication();
 }
 
 {

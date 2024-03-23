@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ShopEase.Backend.PassportService.Persistence.Models.Outbox;
+using ShopEase.Backend.Common.Messaging.Outbox;
 using static ShopEase.Backend.PassportService.Persistence.Constants.TableConstants;
 
 namespace ShopEase.Backend.PassportService.Persistence.Configurations

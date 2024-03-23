@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ShopEase.Backend.PassportService.Core.Aggregate;
 using ShopEase.Backend.PassportService.Core.Entities;
 using ShopEase.Backend.PassportService.Core.ValueObjects;
 using static ShopEase.Backend.PassportService.Persistence.Constants.TableConstants;
@@ -16,22 +17,30 @@ namespace ShopEase.Backend.PassportService.Persistence.Configurations
 
             builder
                 .Property(user => user.Name)
-                .HasConversion(name => name.Value, value => Name.Create(value).Value)
+                .HasConversion(
+                    name => name.Value, 
+                    value => Name.Create(value).Value)
                 .HasMaxLength(Name.MaxLength);
 
             builder
                 .Property(user => user.Email)
-                .HasConversion(email => email.Value, value => Email.Create(value).Value)
+                .HasConversion(
+                    email => email.Value, 
+                    value => Email.Create(value).Value)
                 .HasMaxLength(Email.MaxLength);
 
             builder
                 .Property(user => user.MobileNumber)
-                .HasConversion(mobileNumber => mobileNumber.Value, value => MobileNumber.Create(value).Value)
+                .HasConversion(
+                    mobileNumber => mobileNumber.Value, 
+                    value => MobileNumber.Create(value).Value)
                 .HasMaxLength(MobileNumber.MaxLength);
 
             builder
                 .Property(user => user.AltMobileNumber)
-                .HasConversion(altMobileNumber => altMobileNumber.Value, value => MobileNumber.Create(value).Value)
+                .HasConversion(
+                    altMobileNumber => altMobileNumber != null ? altMobileNumber.Value : null, 
+                    value => value != null ? MobileNumber.Create(value).Value : null)
                 .HasMaxLength(MobileNumber.MaxLength);
 
             builder

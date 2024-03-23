@@ -13,6 +13,8 @@
             internal const string OtpDetails = nameof(OtpDetails);
 
             internal const string OutboxMessage = nameof(OutboxMessage);
+            
+            internal const string OutboxMessageConsumer = nameof(OutboxMessageConsumer);
         }
 
         internal struct TableSchemas

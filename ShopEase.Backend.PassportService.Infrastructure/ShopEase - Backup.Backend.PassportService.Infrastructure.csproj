@@ -8,14 +8,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShopEase.Backend.PassportService.Application\ShopEase.Backend.PassportService.Application.csproj" />
-    <ProjectReference Include="..\ShopEase.Backend.PassportService.Persistence\ShopEase.Backend.PassportService.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Polly" Version="8.3.1" />
+    <PackageReference Include="Polly.Core" Version="8.3.1" />
     <PackageReference Include="Quartz" Version="3.8.1" />
-    <PackageReference Include="Quartz.Extensions.Hosting" Version="3.8.1" />
-    <PackageReference Include="Scrutor" Version="4.2.2" />
   </ItemGroup>
 
 </Project>

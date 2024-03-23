@@ -1,4 +1,4 @@
-﻿namespace ShopEase.Backend.PassportService.Persistence.Models.Outbox
+﻿namespace ShopEase.Backend.Common.Messaging.Outbox
 {
     /// <summary>
     /// Anemic Model Class for the OutboxMessages

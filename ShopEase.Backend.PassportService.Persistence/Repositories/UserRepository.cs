@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShopEase.Backend.PassportService.Application.Abstractions.Repositories;
-using ShopEase.Backend.PassportService.Core.Entities;
+using ShopEase.Backend.PassportService.Core.Aggregate;
 using ShopEase.Backend.PassportService.Core.ValueObjects;
 
 namespace ShopEase.Backend.PassportService.Persistence.Repositories
