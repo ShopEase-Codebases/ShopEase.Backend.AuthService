@@ -1,12 +1,11 @@
 ﻿using FluentValidation;
 using MediatR;
-using ShopEase.Backend.Common.Messaging.Abstractions;
 using ShopEase.Backend.Common.Shared;
 
 namespace ShopEase.Backend.Common.Application.Behaviours
 {
     internal sealed class ValidationPipelineBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-        where TRequest : ICommand, IQuery<TResponse>
+        where TRequest : IRequest<Result>
         where TResponse : Result
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;

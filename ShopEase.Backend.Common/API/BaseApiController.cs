@@ -12,11 +12,11 @@ namespace ShopEase.Backend.Common.API
     [ApiController]
     public abstract class BaseApiController : ControllerBase
     {
-        protected readonly IApiService apiService;
+        protected readonly IApiService _apiService;
 
-        protected BaseApiController(IApiService apiService)
+        protected BaseApiController(IApiService _apiService)
         {
-            this.apiService = apiService;
+            this._apiService = _apiService;
         }
 
         /// <summary>
@@ -60,10 +60,23 @@ namespace ShopEase.Backend.Common.API
 
                 return Problem(
                         statusCode: statusCode, 
-                        type: nameof(error.Type), 
+                        type: Enum.GetName(typeof(ErrorType), error.Type), 
                         title: error.Code, 
                         detail: error.Message);
             }
+        }
+
+        /// <summary>
+        /// Handles Bad Request Situations 
+        /// When the Request is Null or Empty
+        /// </summary>
+        /// <returns></returns>
+        protected IActionResult HandleNullOrEmptyRequest()
+        {
+            var modelStateDictionary = new ModelStateDictionary();
+            modelStateDictionary.AddModelError(Error.NullOrEmptyRequest.Code, Error.NullOrEmptyRequest.Message);
+
+            return ValidationProblem(modelStateDictionary);
         }
     }
 }

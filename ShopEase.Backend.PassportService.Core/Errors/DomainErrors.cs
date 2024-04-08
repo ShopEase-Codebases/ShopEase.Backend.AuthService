@@ -61,5 +61,15 @@ namespace ShopEase.Backend.PassportService.Core.Errors
 
             public static readonly Error TooLong = Error.Validation("Otp.TooLong", "Otp is too long");
         }
+
+        /// <summary>
+        /// Error related to User Aggreagte Root
+        /// </summary>
+        public readonly struct User
+        {
+            public static readonly Error EmailAlreadyInUse = Error.Conflict("User.EmailAlreadyInUse", "The specified Email is already in use.");
+
+            public static readonly Error UserNotFound = Error.NotFound("User.UserNotFound", "The specified UserId doesn't return any User.");
+        }
     }
 }

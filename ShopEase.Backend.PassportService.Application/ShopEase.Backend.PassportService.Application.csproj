@@ -15,4 +15,8 @@
     <ProjectReference Include="..\ShopEase.Backend.PassportService.Core\ShopEase.Backend.PassportService.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UserCredential\Commands\" />
+  </ItemGroup>
+
 </Project>

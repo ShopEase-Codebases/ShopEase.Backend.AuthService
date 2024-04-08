@@ -14,12 +14,12 @@ namespace ShopEase.Backend.PassportService.Infrastructure.BackgroundJobs
     {
         private readonly AppDbContext _appDbContext;
 
-        private readonly IEventPublisher _eventPublisher;
+        private readonly IApiService _apiService;
 
-        public PublishDomainEventJob(AppDbContext appDbContext, IEventPublisher eventPublisher)
+        public PublishDomainEventJob(AppDbContext appDbContext, IApiService apiService)
         {
             _appDbContext = appDbContext;
-            _eventPublisher = eventPublisher;
+            _apiService = apiService;
         }
 
         public async Task Execute(IJobExecutionContext context)
@@ -54,8 +54,8 @@ namespace ShopEase.Backend.PassportService.Infrastructure.BackgroundJobs
 
                 PolicyResult policyResult = await retryPolicy
                                                     .ExecuteAndCaptureAsync(() => 
-                                                        _eventPublisher
-                                                            .Publish(domainEvent, context.CancellationToken));
+                                                        _apiService
+                                                            .EventPublisher(domainEvent, context.CancellationToken));
 
                 if (policyResult.FinalException is not null)
                 {

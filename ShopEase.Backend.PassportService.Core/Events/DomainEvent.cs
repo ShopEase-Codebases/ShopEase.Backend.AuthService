@@ -2,8 +2,7 @@
 
 namespace ShopEase.Backend.PassportService.Core.Events
 {
-    public class UserRegisteredEvent : IDomainEvent
+    public abstract record DomainEvent(Guid Id) : IDomainEvent
     {
-        public Guid Id { get; init; }
     }
 }

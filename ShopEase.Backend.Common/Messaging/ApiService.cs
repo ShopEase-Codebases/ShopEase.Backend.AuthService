@@ -10,11 +10,11 @@ namespace ShopEase.Backend.Common.Messaging
 
         #region Request Methods
 
-        public Task<Result<TResponse>> RequestAsync<TResponse>(IQuery<TResponse> query)
+        public Task<Result<TResponse>> RequestAsync<TResponse>(IQuery<TResponse> query, CancellationToken cancellationToken = default)
         {
             ArgumentNullException.ThrowIfNull(nameof(query));
 
-            return _mediator.Send(query);
+            return _mediator.Send(query, cancellationToken);
         }
 
         public Result<TResponse> Request<TResponse>(IQuery<TResponse> query)
@@ -35,11 +35,11 @@ namespace ShopEase.Backend.Common.Messaging
             return _mediator.Send(command).Result;
         }
 
-        public Task<Result> SendAsync<TCommand>(TCommand command) where TCommand : ICommand
+        public Task<Result> SendAsync<TCommand>(TCommand command, CancellationToken cancellationToken = default) where TCommand : ICommand
         {
             ArgumentNullException.ThrowIfNull(nameof(command));
 
-            return _mediator.Send(command);
+            return _mediator.Send(command, cancellationToken);
         }
 
         public Result<TResponse> Send<TResponse>(ICommand<TResponse> command)
@@ -49,11 +49,22 @@ namespace ShopEase.Backend.Common.Messaging
             return _mediator.Send(command).Result;
         }
 
-        public Task<Result<TResponse>> SendAsync<TResponse>(ICommand<TResponse> command)
+        public Task<Result<TResponse>> SendAsync<TResponse>(ICommand<TResponse> command, CancellationToken cancellationToken = default)
         {
             ArgumentNullException.ThrowIfNull(nameof(command));
 
-            return _mediator.Send(command);
+            return _mediator.Send(command, cancellationToken);
+        }
+
+        #endregion
+
+        #region Publisher Methods
+
+        public async Task EventPublisher<TEvent>(TEvent eventMessage, CancellationToken cancellationToken = default)
+            where TEvent : IEvent
+        {
+            ArgumentNullException.ThrowIfNull(nameof(eventMessage));
+            await _mediator.Publish(eventMessage, cancellationToken);
         }
 
         #endregion

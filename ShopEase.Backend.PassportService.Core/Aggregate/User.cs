@@ -1,5 +1,6 @@
 ﻿using ShopEase.Backend.Common.Domain.Primitives;
 using ShopEase.Backend.PassportService.Core.Entities;
+using ShopEase.Backend.PassportService.Core.Events;
 using ShopEase.Backend.PassportService.Core.ValueObjects;
 
 namespace ShopEase.Backend.PassportService.Core.Aggregate
@@ -100,22 +101,11 @@ namespace ShopEase.Backend.PassportService.Core.Aggregate
         /// <returns></returns>
         public static User CreateUser(Name name, Email email, MobileNumber mobileNumber, MobileNumber? altMobileNumber)
         {
-            return new User(Guid.NewGuid(), name, email, mobileNumber, altMobileNumber);
-        }
+            var user = new User(Guid.NewGuid(), name, email, mobileNumber, altMobileNumber);
 
-        /// <summary>
-        /// To Create New UserCredentials
-        /// </summary>
-        /// <param name="passwordHash"></param>
-        /// <param name="passwordSalt"></param>
-        /// <returns></returns>
-        public UserCredentials CreateCredentials(byte[] passwordHash, byte[] passwordSalt)
-        {
-            var userCredential = new UserCredentials(Guid.NewGuid(), this.Id, passwordHash, passwordSalt, null, null);
+            user.RaiseDomainEvent(new UserRegisteredDomainEvent(Guid.NewGuid(), user.Id, email.Value));
 
-            UserCredentials = userCredential;
-
-            return userCredential;
+            return user;
         }
 
         /// <summary>

@@ -21,8 +21,4 @@
     <ProjectReference Include="..\ShopEase.Backend.PassportService.Persistence\ShopEase.Backend.PassportService.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Contracts\" />
-  </ItemGroup>
-
 </Project>

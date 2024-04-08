@@ -4,6 +4,8 @@ using Quartz;
 using Scrutor;
 using ShopEase.Backend.Common.Messaging.Abstractions;
 using ShopEase.Backend.PassportService.Application;
+using ShopEase.Backend.PassportService.Application.Abstractions;
+using ShopEase.Backend.PassportService.Infrastructure.BackgroundJobs;
 using ShopEase.Backend.PassportService.Infrastructure.Helpers;
 using ShopEase.Backend.PassportService.Infrastructure.Idempotence;
 
@@ -14,6 +16,7 @@ namespace ShopEase.Backend.PassportService.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddHelpers(configuration);
+            services.AddServices();
             services.AddBackgroundJobs(configuration);
             services.AddDomainEventHandlerWithDecorator();
 
@@ -28,21 +31,17 @@ namespace ShopEase.Backend.PassportService.Infrastructure
             return services;
         }
 
+        private static IServiceCollection AddServices(this IServiceCollection services)
+        {
+            services.AddScoped<IAuthServices, AuthServices>();
+
+            return services;
+        }
+
         private static IServiceCollection AddBackgroundJobs(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddQuartz(configure =>
-            {
-                //var publishDomainEventJobKey = new JobKey(nameof(PublishDomainEventJob));
-
-                //configure
-                //    .AddJob<PublishDomainEventJob>(publishDomainEventJobKey)
-                //    .AddTrigger(trigger =>
-                //                    trigger
-                //                        .ForJob(publishDomainEventJobKey)
-                //                            .WithSimpleSchedule(schedule =>
-                //                                schedule.WithIntervalInSeconds(60)
-                //                                .RepeatForever()));
-
+            {   
                 List<BackgroundJobConfig>? backgroundJobs = configuration.GetSection("BackgroundJobs").Get<List<BackgroundJobConfig>>();
 
                 if (backgroundJobs is not null && backgroundJobs.Count != 0)
@@ -56,17 +55,19 @@ namespace ShopEase.Backend.PassportService.Infrastructure
                             if (jobType is not null)
                             {
                                 var jobKey = new JobKey(backgroundJob.Name);
+                                var triggerKey = backgroundJob.Name + "Trigger";
 
                                 configure.AddJob(jobType, jobKey);
+
                                 configure.AddTrigger(trigger =>
                                                         trigger
+                                                            .WithIdentity(triggerKey)
                                                             .ForJob(jobKey)
                                                             .WithCronSchedule(backgroundJob.Schedule));
                             }
                         }
                     }
                 }
-
             });
 
             services.AddQuartzHostedService();

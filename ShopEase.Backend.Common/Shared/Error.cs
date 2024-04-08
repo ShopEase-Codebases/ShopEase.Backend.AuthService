@@ -13,7 +13,9 @@
 
         public static readonly Error ConditionNotMet = new("Error.ConditionNotMet", "The specified condition was not met.", ErrorType.Failure);
 
-        public static readonly Error ValidationError = new("ValidationError", "A validation Error occurred.", ErrorType.Validation);
+        public static readonly Error ValidationError = new("Error.ValidationError", "A validation Error occurred.", ErrorType.Validation);
+
+        public static readonly Error NullOrEmptyRequest = new("Error.NullOrEmptyRequest", "A validation Error occurred.", ErrorType.Validation);
 
         public static Error Failure(string code, string message) => new(code, message, ErrorType.Failure);
         public static Error Unexpected(string code, string message) => new(code, message, ErrorType.Unexpected);

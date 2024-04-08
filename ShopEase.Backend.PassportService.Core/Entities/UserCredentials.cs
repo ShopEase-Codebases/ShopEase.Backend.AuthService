@@ -1,4 +1,5 @@
 ﻿using ShopEase.Backend.Common.Domain.Primitives;
+using System.Runtime.CompilerServices;
 
 namespace ShopEase.Backend.PassportService.Core.Entities
 {
@@ -18,7 +19,7 @@ namespace ShopEase.Backend.PassportService.Core.Entities
         /// <param name="passwordSalt"></param>
         /// <param name="refreshToken"></param>
         /// <param name="refreshTokenExpirationTimeUtc"></param>
-        internal UserCredentials(Guid id, Guid userId, byte[] passwordHash, byte[] passwordSalt, string? refreshToken, DateTime? refreshTokenExpirationTimeUtc)
+        private UserCredentials(Guid id, Guid userId, byte[] passwordHash, byte[] passwordSalt, string? refreshToken, DateTime? refreshTokenExpirationTimeUtc)
             : base(id)
         {
             UserId = userId;
@@ -76,7 +77,30 @@ namespace ShopEase.Backend.PassportService.Core.Entities
 
         #region Public Methods
 
+        /// <summary>
+        /// To Create New UserCredentials
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="passwordHash"></param>
+        /// <param name="passwordSalt"></param>
+        /// <returns></returns>
+        public static UserCredentials Create(Guid userId, byte[] passwordHash, byte[] passwordSalt)
+        {
+            var userCredential = new UserCredentials(Guid.NewGuid(), userId, passwordHash, passwordSalt, null, null);
 
+            return userCredential;
+        }
+
+        /// <summary>
+        /// To add or update Refresh Token
+        /// </summary>
+        /// <param name="refreshToken"></param>
+        /// <param name="refreshTokenExpirationTimeUtc"></param>
+        public void AddOrUpdateRefreshToken(string refreshToken, DateTime refreshTokenExpirationTimeUtc)
+        {
+            RefreshToken = refreshToken;
+            RefreshTokenExpirationTimeUtc = refreshTokenExpirationTimeUtc;
+        }
 
         #endregion
     }
