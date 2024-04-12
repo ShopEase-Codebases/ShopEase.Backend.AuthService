@@ -7,7 +7,11 @@ namespace ShopEase.Backend.PassportService.Application.Abstractions.Repositories
     {
         Task<User?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
+        Task<User?> GetByEmailAsync(Email email, CancellationToken cancellationToken = default);
+
         Task<User?> GetByIdAsyncWithCredentials(Guid id, CancellationToken cancellationToken = default);
+
+        Task<User?> GetByEmailAsyncWithCredentials(Email email, CancellationToken cancellationToken = default);
 
         Task<User?> GetByIdAsyncWithAddress(Guid id, CancellationToken cancellationToken = default);
 

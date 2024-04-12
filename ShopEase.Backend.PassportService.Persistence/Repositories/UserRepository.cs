@@ -58,5 +58,22 @@ namespace ShopEase.Backend.PassportService.Persistence.Repositories
         {
             _appDbContext.Set<User>().Remove(user);
         }
+
+        public async Task<User?> GetByEmailAsync(Email email, CancellationToken cancellationToken = default)
+        {
+            return await _appDbContext
+                            .Set<User>()
+                            .Where(user => user.Email == email)
+                            .FirstOrDefaultAsync(cancellationToken);
+        }
+
+        public async Task<User?> GetByEmailAsyncWithCredentials(Email email, CancellationToken cancellationToken = default)
+        {
+            return await _appDbContext
+                            .Set<User>()
+                            .Include(user => user.UserCredentials)
+                            .Where(user => user.Email == email)
+                            .FirstOrDefaultAsync(cancellationToken);
+        }
     }
 }

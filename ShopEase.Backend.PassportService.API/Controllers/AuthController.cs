@@ -2,6 +2,7 @@
 using ShopEase.Backend.Common.API;
 using ShopEase.Backend.Common.Messaging.Abstractions;
 using ShopEase.Backend.PassportService.API.Contracts;
+using ShopEase.Backend.PassportService.Application;
 using ShopEase.Backend.PassportService.Application.Users.Commands.RegisterUser;
 
 namespace ShopEase.Backend.PassportService.API.Controllers
@@ -44,6 +45,38 @@ namespace ShopEase.Backend.PassportService.API.Controllers
             return response.IsFailure ?
                     HandleFailure(response) :
                     Ok(new RegisterUserResponse(
+                        UserId: response.Value.UserId,
+                        AccessToken: response.Value.AccessToken,
+                        RefreshToken: response.Value.RefreshToken,
+                        RefreshTokenExpirationTimeUtc: response.Value.RefreshTokenExpirationTimeUtc)); // Auto Map - ToDo
+        }
+
+        /// <summary>
+        /// To Login a Registered User
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("login")]
+        [ProducesResponseType(typeof(LoginUserResponse), statusCode: StatusCodes.Status200OK)]
+        [ProducesErrorResponseType(typeof(ProblemDetails))]
+        public async Task<IActionResult> LoginUser([FromBody] LoginUserRequest request, CancellationToken cancellationToken)
+        {
+            if (request is null)
+            {
+                return HandleNullOrEmptyRequest();
+            }
+
+            var command = new LoginUserCommand(
+                                    Email: request.Email, 
+                                    Password: request.Password);
+            
+            var response = await _apiService.SendAsync(command, cancellationToken);
+
+            return response.IsFailure ? 
+                    HandleFailure(response) :
+                    Ok(new LoginUserResponse(
                         UserId: response.Value.UserId,
                         AccessToken: response.Value.AccessToken,
                         RefreshToken: response.Value.RefreshToken,

@@ -71,5 +71,13 @@ namespace ShopEase.Backend.PassportService.Core.Errors
 
             public static readonly Error UserNotFound = Error.NotFound("User.UserNotFound", "The specified UserId doesn't return any User.");
         }
+
+        /// <summary>
+        /// Error related to UserCredentials Entity
+        /// </summary>
+        public readonly struct UserCredentials
+        {
+            public static readonly Error WrongCredentials = Error.Unauthorized("User.WrongCredentials", "The specified credentials are wrong.");
+        }
     }
 }

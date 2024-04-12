@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ShopEase.Backend.Common.API;
 using ShopEase.Backend.Common.Messaging.Abstractions;
-using ShopEase.Backend.Common.Shared;
 using ShopEase.Backend.PassportService.API.Contracts;
 using ShopEase.Backend.PassportService.Application.Users.Queries.GetUserById;
 
 namespace ShopEase.Backend.PassportService.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     public class UserController : BaseApiController
     {
         public UserController(IApiService _apiService) : base(_apiService)
