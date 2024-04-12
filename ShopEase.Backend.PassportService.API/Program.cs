@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 {
     builder.Services
-                .AddApi()
+                .AddApi(builder.Configuration)
                 .AddShopEaseCommon(ShopEase.Backend.PassportService.Application.AssemblyReference.Assembly)
                 .AddPersistence(builder.Configuration)
                 .AddInfrastructure(builder.Configuration)
@@ -18,14 +18,22 @@ var builder = WebApplication.CreateBuilder(args);
 {
     var app = builder.Build();
 
-    if (app.Environment.IsDevelopment())
-    {
-        app.UseSwagger();
-        app.UseSwaggerUI();
-    }
+    //if (app.Environment.IsDevelopment())
+    //{
+    //    app.UseSwagger();
+    //    app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "ShopEase PassportService API V1"));
+    //}
+
+    app.UseSwagger();
+    app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "ShopEase PassportService API V1"));
 
     app.UseHttpsRedirection();
+
+    app.UseAuthentication();
     app.UseAuthorization();
+
+    app.UseExceptionHandler( _ => { } );
+
     app.MapControllers();
     app.Run();
 }

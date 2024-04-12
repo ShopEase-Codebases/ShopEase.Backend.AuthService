@@ -13,6 +13,7 @@ namespace ShopEase.Backend.Common
         {
             AddMessaging(services, handlerAssembly);
             AddBehaviours(services);
+            AddExceptionHandler(services);
 
             return services;
         }
@@ -32,6 +33,13 @@ namespace ShopEase.Backend.Common
         private static IServiceCollection AddBehaviours(this IServiceCollection services) 
         {
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehaviour<,>));
+
+            return services;
+        }
+
+        private static IServiceCollection AddExceptionHandler(this IServiceCollection services)
+        {
+            services.AddExceptionHandler<GlobalExceptionHandler>();
 
             return services;
         }

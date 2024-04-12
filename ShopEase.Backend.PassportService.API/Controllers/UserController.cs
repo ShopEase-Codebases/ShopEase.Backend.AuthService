@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShopEase.Backend.Common.API;
 using ShopEase.Backend.Common.Messaging.Abstractions;
 using ShopEase.Backend.Common.Shared;
 using ShopEase.Backend.PassportService.API.Contracts;
 using ShopEase.Backend.PassportService.Application.Users.Queries.GetUserById;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ShopEase.Backend.PassportService.API.Controllers
 {
@@ -30,20 +28,7 @@ namespace ShopEase.Backend.PassportService.API.Controllers
                 return HandleNullOrEmptyRequest();
             }
 
-            Guid userId; 
-
-            try
-            {
-                userId = Guid.Parse(id);
-            }
-            catch (Exception ex)
-            {
-                return Problem(
-                        statusCode: StatusCodes.Status400BadRequest,
-                        type: nameof(ErrorType.Failure),
-                        title: ex.Message,
-                        detail: ex.InnerException?.ToString());
-            }
+            Guid userId = Guid.Parse(id);
 
             var result = await _apiService.RequestAsync(new GetUserByIdQuery(userId), cancellationToken);
 
