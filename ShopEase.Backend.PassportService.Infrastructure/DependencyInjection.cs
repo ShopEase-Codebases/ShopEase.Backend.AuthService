@@ -34,6 +34,7 @@ namespace ShopEase.Backend.PassportService.Infrastructure
         private static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<IAuthServices, AuthServices>();
+            services.AddSingleton<IEmailServices, EmailServices>();
 
             return services;
         }
