@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Otp\Commands\" />
     <Folder Include="UserCredential\Commands\" />
   </ItemGroup>
 

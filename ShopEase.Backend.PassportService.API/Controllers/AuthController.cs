@@ -2,7 +2,7 @@
 using ShopEase.Backend.Common.API;
 using ShopEase.Backend.Common.Messaging.Abstractions;
 using ShopEase.Backend.PassportService.API.Contracts;
-using ShopEase.Backend.PassportService.Application;
+using ShopEase.Backend.PassportService.Application.Users.Commands.LoginUser;
 using ShopEase.Backend.PassportService.Application.Users.Commands.RegisterUser;
 
 namespace ShopEase.Backend.PassportService.API.Controllers
@@ -13,6 +13,8 @@ namespace ShopEase.Backend.PassportService.API.Controllers
         public AuthController(IApiService _apiService) : base(_apiService)
         {
         }
+
+        #region Public Endpoints
 
         /// <summary>
         /// To Register a new User
@@ -82,5 +84,17 @@ namespace ShopEase.Backend.PassportService.API.Controllers
                         RefreshToken: response.Value.RefreshToken,
                         RefreshTokenExpirationTimeUtc: response.Value.RefreshTokenExpirationTimeUtc)); // Auto Map - ToDo
         }
+
+        public async Task<IActionResult> LoginUsingOtp([FromBody] LoginUsingOtpRequest request, CancellationToken cancellationToken)
+        {
+            if (request is null)
+            {
+                return HandleNullOrEmptyRequest();
+            }
+
+            return Ok();
+        }
+
+        #endregion
     }
 }

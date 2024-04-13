@@ -1,4 +1,4 @@
-﻿namespace ShopEase.Backend.PassportService.Application
+﻿namespace ShopEase.Backend.PassportService.Application.Shared.Models
 {
     /// <summary>
     /// Shared Record for MailRequest 

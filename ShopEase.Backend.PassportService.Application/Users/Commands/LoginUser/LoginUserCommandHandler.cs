@@ -7,7 +7,7 @@ using ShopEase.Backend.PassportService.Application.Shared.Models;
 using ShopEase.Backend.PassportService.Core.Errors;
 using ShopEase.Backend.PassportService.Core.ValueObjects;
 
-namespace ShopEase.Backend.PassportService.Application
+namespace ShopEase.Backend.PassportService.Application.Users.Commands.LoginUser
 {
     internal class LoginUserCommandHandler : ICommandHandler<LoginUserCommand, AuthenticationResult>
     {

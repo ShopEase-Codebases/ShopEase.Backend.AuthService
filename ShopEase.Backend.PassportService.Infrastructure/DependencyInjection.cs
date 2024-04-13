@@ -3,9 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Quartz;
 using Scrutor;
 using ShopEase.Backend.Common.Messaging.Abstractions;
-using ShopEase.Backend.PassportService.Application;
+using app = ShopEase.Backend.PassportService.Application;
 using ShopEase.Backend.PassportService.Application.Abstractions;
-using ShopEase.Backend.PassportService.Infrastructure.BackgroundJobs;
 using ShopEase.Backend.PassportService.Infrastructure.Helpers;
 using ShopEase.Backend.PassportService.Infrastructure.Idempotence;
 

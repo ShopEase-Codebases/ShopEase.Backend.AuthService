@@ -1,4 +1,6 @@
-﻿namespace ShopEase.Backend.PassportService.Application
+﻿using ShopEase.Backend.PassportService.Application.Shared.Models;
+
+namespace ShopEase.Backend.PassportService.Application.Abstractions
 {
     /// <summary>
     /// Interface for Email Services

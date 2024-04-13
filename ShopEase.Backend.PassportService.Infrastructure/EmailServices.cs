@@ -2,7 +2,8 @@
 using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
-using ShopEase.Backend.PassportService.Application;
+using ShopEase.Backend.PassportService.Application.Abstractions;
+using ShopEase.Backend.PassportService.Application.Shared.Models;
 using ShopEase.Backend.PassportService.Infrastructure.Helpers;
 
 namespace ShopEase.Backend.PassportService.Infrastructure

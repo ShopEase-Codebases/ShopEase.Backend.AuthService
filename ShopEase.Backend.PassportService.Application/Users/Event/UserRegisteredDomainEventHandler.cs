@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text;
 using ShopEase.Backend.Common.Messaging.Abstractions;
+using ShopEase.Backend.PassportService.Application.Abstractions;
 using ShopEase.Backend.PassportService.Application.Abstractions.Repositories;
+using ShopEase.Backend.PassportService.Application.Shared.Models;
 using ShopEase.Backend.PassportService.Core.Aggregate;
 using ShopEase.Backend.PassportService.Core.Events;
-using static ShopEase.Backend.PassportService.Application.Constant.EmailConstants;
+using static ShopEase.Backend.PassportService.Application.Shared.Constant.EmailConstants;
 
 namespace ShopEase.Backend.PassportService.Application.Users.Event
 {
